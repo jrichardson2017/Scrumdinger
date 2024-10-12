@@ -21,8 +21,12 @@ struct CardView: View {
                 Label("\(scrum.attendees.count)", systemImage: "person.3")
                 Spacer()
                 Label("\(scrum.lengthInMinutes)", systemImage: "clock")
+                    .padding(.leading, 20.0)
             }
+            .font(.caption)
         }
+        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        .foregroundStyle(scrum.theme.accentColor)
     }
 }
 
