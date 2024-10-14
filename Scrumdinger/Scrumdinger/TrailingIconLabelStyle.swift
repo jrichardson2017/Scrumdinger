@@ -16,8 +16,6 @@ struct TrailingIconLabelStyle: LabelStyle {
     }
 }
 
-//struct TrailingIconLabelStyle_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TrailingIconLabelStyle()
-//    }
-//}
+extension LabelStyle where Self == TrailingIconLabelStyle {
+    static var trailingIcon: Self { Self() }
+}
