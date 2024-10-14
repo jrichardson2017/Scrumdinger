@@ -1,0 +1,14 @@
+# macOS Files
+.DS_Store
+
+
+# Xcode
+DerivedData/
+*.xcworkspace
+
+# Swift Package Manager
+#.build/
+
+# Personal settings
+*.xcuserstate
+*.xcodeproj/project.xcuserdatad/
