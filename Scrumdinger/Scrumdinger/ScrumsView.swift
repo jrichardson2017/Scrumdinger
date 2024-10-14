@@ -12,7 +12,7 @@ struct ScrumsView: View {
     
     var body: some View {
         List(scrums, id: \.title) { scrum in
-            /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Content")/*@END_MENU_TOKEN@*/
+            CardView(scrum: scrum)
         }
     }
 }
