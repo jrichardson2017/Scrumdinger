@@ -18,6 +18,13 @@ struct ScrumsView: View {
                 }
                 .listRowBackground(scrum.theme.mainColor)
             }
+            .navigationTitle("Daily Scrums")
+            .toolbar {
+                Button(action: {print("Add scrum!")}) {
+                    Image(systemName: "plus")
+                }
+                .accessibilityLabel("New Scrum")
+            }
         }
     }
 }
