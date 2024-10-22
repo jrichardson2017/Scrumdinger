@@ -25,6 +25,7 @@ struct DetailEditView: View {
                     Spacer()
                     Text("\(scrum.lengthInMinutes) minutes")
                 }
+                ThemePicker(selection: $scrum.theme)
             }
             
             Section(header: Text("Attendees")) {
@@ -53,5 +54,7 @@ struct DetailEditView: View {
 }
 
 #Preview {
-    DetailEditView()
+    NavigationStack {
+        DetailEditView()
+    }
 }
