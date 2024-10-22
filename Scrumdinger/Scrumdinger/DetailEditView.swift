@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailEditView: View {
-    @State private var scrum = DailyScrum.emptyScrum
+    @Binding var scrum: DailyScrum
     @State private var newAttendeeName: String = ""
     
     var body: some View {
@@ -18,13 +18,14 @@ struct DetailEditView: View {
                 HStack {
                     Slider(value: $scrum.lengthInMinutesAsDouble, in: 5...30, step: 1) {
                         Text("Length")
-                            .accessibilityHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                            .accessibilityHidden(true)
                             
                     }
                     .accessibilityLabel("\(scrum.lengthInMinutes) minutes")
                     Spacer()
                     Text("\(scrum.lengthInMinutes) minutes")
                 }
+                ThemePicker(selection: $scrum.theme)
             }
             
             Section(header: Text("Attendees")) {
@@ -53,5 +54,7 @@ struct DetailEditView: View {
 }
 
 #Preview {
-    DetailEditView()
+    NavigationStack {
+        DetailEditView(scrum: .constant(DailyScrum.mockData[0]))
+    }
 }
