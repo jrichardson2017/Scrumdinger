@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct MeetingHeaderView: View {
-    var secondsElapsed: Int
-    var secondsRemaining: Int
+    let secondsElapsed: Int
+    let secondsRemaining: Int
+    let theme: Theme
     
     private var totalSeconds: Int {
         secondsElapsed + secondsRemaining
@@ -27,6 +28,7 @@ struct MeetingHeaderView: View {
     var body: some View {
         VStack {
             ProgressView(value: 5)
+                .progressViewStyle(ScrumProgressViewStyle(theme: theme))
             
             HStack {
                 VStack(alignment: .leading) {
@@ -41,18 +43,20 @@ struct MeetingHeaderView: View {
                     Text("Seconds Remaining")
                         .font(.caption)
                     Label("\(secondsRemaining)", systemImage: "hourglass.bottomhalf.fill")
+                        .labelStyle(.trailingIcon)
                 }
             }
         }
         .accessibilityElement(children: /*@START_MENU_TOKEN@*/.ignore/*@END_MENU_TOKEN@*/)
         .accessibilityLabel("Time Remaining")
         .accessibilityValue("\(minutesRemaining) minutes")
+        .padding([.top, .horizontal])
     }
 }
 
 struct MeetingHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        MeetingHeaderView(secondsElapsed: 300, secondsRemaining: 600)
+        MeetingHeaderView(secondsElapsed: 300, secondsRemaining: 600, theme: DailyScrum.mockData[0].theme)
             .previewLayout(.sizeThatFits)
     }
 }
