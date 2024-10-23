@@ -12,4 +12,16 @@ final class ScrumTimer: ObservableObject {
     var secondsElapsed = 0
     var secondsRemaining = 0
     
+    func startScrum() {
+        
+    }
+    
+    func stopScrum() {
+        
+    }
+    
+    func reset(lengthInMinutes: Int, attendees: [DailyScrum.Attendee]) {
+        
+    }
+    
 }
