@@ -18,7 +18,8 @@ struct MeetingHeaderView: View {
     
     private var progress: Double {
         guard totalSeconds > 0 else { return 1 }
-        return Double(secondsElapsed) / Double(secondsRemaining)
+        let calculatedProgress = Double(secondsElapsed) / Double(secondsRemaining)
+        return max(0, min(calculatedProgress, 1))  // Ensures value is within 0...1
     }
     
     private var minutesRemaining: Int {
@@ -27,7 +28,7 @@ struct MeetingHeaderView: View {
     
     var body: some View {
         VStack {
-            ProgressView(value: 5)
+            ProgressView(value: progress)
                 .progressViewStyle(ScrumProgressViewStyle(theme: theme))
             
             HStack {
