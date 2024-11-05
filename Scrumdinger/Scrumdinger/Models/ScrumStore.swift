@@ -5,9 +5,9 @@
 //  Created by justin richardson on 2024-11-04.
 //
 
-import Foundation
+import SwiftUI
 
-
+@MainActor
 class ScrumStore: ObservableObject {
     
     @Published var scrums: [DailyScrum] = DailyScrum.mockData
@@ -33,9 +33,9 @@ class ScrumStore: ObservableObject {
     }
     
     func load() async throws {
-        let task = Task {
+        let task = Task<[DailyScrum], Error> {
             let file = try Self.fileURL()
-            let data = try Data(contentsOf: file)
+            guard let data = try? Data(contentsOf: file) else { return [] }
             let scrums = try JSONDecoder().decode([DailyScrum].self, from: data)
             return scrums
         }
